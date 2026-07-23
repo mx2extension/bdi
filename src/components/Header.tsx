@@ -53,6 +53,7 @@ export default function Header() {
         { label: "About Us", href: "/about/bdi" },
         { label: "Careers", href: "/careers" },
         { label: "Investment Map", href: "/investment-map" },
+        { label: "ELI7 Foundation", href: "/eli7-foundation" },
       ],
     },
     {
