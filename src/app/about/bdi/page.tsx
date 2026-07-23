@@ -45,13 +45,13 @@ const phases = [
 const developmentAreas = [
   { title: "Medical & Healthcare", description: "Top-notch healthcare facilities, modern hospitals, and accessible primary care centres across the state.", image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80" },
   { title: "Research into African Medicine", description: "Supporting research and development in traditional and modern African medicine for global relevance.", image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&q=80" },
-  { title: "Security Integration", description: "Comprehensive security architecture ensuring safe environment for residents, businesses, and investors.", image: "https://images.unsplash.com/photo-1586953208270-767fc1b15b90?w=600&q=80" },
+  { title: "Security Integration", description: "Comprehensive security architecture ensuring safe environment for residents, businesses, and investors.", image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1769763647/police-logo-34-6_cfnkzp.jpg" },
   { title: "Technology Development", description: "Building digital infrastructure, tech hubs, and innovation ecosystems to drive the knowledge economy.", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" },
   { title: "Industries & Factories", description: "Establishing industrial zones and manufacturing facilities to create jobs and boost local production capacity.", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" },
   { title: "Infrastructure & Roads", description: "Modern road networks, bridges, water systems, and public utilities to support economic activity.", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" },
   { title: "Tourism & Hospitality", description: "Developing tourism centres, cultural sites, and hospitality infrastructure to unlock Bauchi's tourism potential.", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" },
   { title: "Revenue Generation", description: "Building sustainable revenue streams through diversified economic activities and efficient tax systems.", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" },
-  { title: "Media & Communications", description: "Strengthening media capacity and communication channels for transparency and public engagement.", image: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&q=80" },
+  { title: "Media & Communications", description: "Strengthening media capacity and communication channels for transparency and public engagement.", image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1782105879/images_sodz5s.jpg" },
   { title: "NGO & Development Partners", description: "Collaborating with NGOs and development organisations for humanitarian support and community programmes.", image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" },
   { title: "Upgrade & Modern Development", description: "Systematic upgrading of existing structures, systems, and urban areas to meet modern standards.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" },
   { title: "Businesses & Commerce", description: "Fostering a thriving business environment with support for SMEs, markets, and enterprise development.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" },
@@ -102,7 +102,7 @@ export default function AboutBDI() {
             </p>
           </div>
           <div className="reveal-on-scroll relative h-[500px]" style={{ transitionDelay: "200ms" }}>
-            <Image src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783864945/593eb828-05ce-470f-83d7-a2da65f33daa.png" alt="BDI Team" fill className="object-cover" />
+            <Image src="https://res.cloudinary.com/drnrbfltr/image/upload/v1784635990/83a2bae1-5748-4734-99b7-a4462440607f.png" alt="BDI Team" fill className="object-cover" />
             <div className="absolute -bottom-5 -right-5 w-full h-full border border-accent -z-10"></div>
           </div>
         </div>
@@ -327,7 +327,7 @@ export default function AboutBDI() {
       </section>
 
       {/* Community Development */}
-      <section className="container mx-auto px-6 py-20">
+<section className="container mx-auto px-6 py-20">
         <div className="reveal-on-scroll max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -340,7 +340,18 @@ export default function AboutBDI() {
             <div className="bg-primary p-8 flex flex-col justify-center">
               <p className="font-serif text-5xl text-white mb-4">❤️</p>
               <h3 className="font-serif text-xl text-white mb-3">Extend Love Initiative Foundation</h3>
-              <p className="text-white/50 text-sm leading-relaxed">Humanitarian and community development programmes supporting vulnerable communities and promoting social impact.</p>
+              <p className="text-white/85 text-sm leading-relaxed mb-4">Humanitarian and community development programmes supporting vulnerable communities and promoting social impact.</p>
+              
+              {/* Added support email section */}
+              <div className="mt-2 pt-4 border-t border-white/20">
+                <p className="text-white/70 text-xs uppercase tracking-wider mb-1">For Support & Inquiries</p>
+                <a 
+                  href="mailto:eli7foundation@gmail.com" 
+                  className="text-white text-sm font-medium hover:underline break-all"
+                >
+                  eli7foundation@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { ArrowRight } from "lucide-react";
 import HeroSlider from "@/components/HeroSlider";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import SectorTreeDiagram from "@/components/SectorTreeDiagram";  // ← add this
 
 export default async function Home() {
   const supabase = await createClient();
@@ -26,10 +27,34 @@ export default async function Home() {
   const gallery = galleryRes.data || [];
   const projects = projectsRes.data || [];
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mx2bdi.com";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "GovernmentOrganization",
+    "name": "Bauchi State Development Initiative",
+    "alternateName": "BDI Bauchi",
+    "url": siteUrl,
+    "logo": "https://res.cloudinary.com/drnrbfltr/image/upload/v1781946164/file_00000000917071f492d4f57a5487aa02_btpy4b.png",
+    "description": "Catalyzing sustainable economic growth in Bauchi State through strategic investments, innovation, and public-private partnerships.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bauchi",
+      "addressRegion": "Bauchi State",
+      "addressCountry": "NG"
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <HeroSlider slides={slides} />
 
+      {/* ── Stats Bar ── */}
       <section className="bg-primary-dark py-20 relative z-10">
         <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat) => (
@@ -47,6 +72,7 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Our Mandate ── */}
       <section className="bg-gray-50 py-32">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="reveal-on-scroll">
@@ -65,30 +91,10 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="py-32">
-        <div className="container mx-auto px-6">
-          <div className="reveal-on-scroll text-center mb-16">
-            <span className="block text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-4">Investment Landscape</span>
-            <h2 className="font-serif text-4xl mb-4 text-gray-900">Strategic Growth Sectors</h2>
-            <div className="w-10 h-px bg-accent mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sectors.map((sector, i) => (
-              <div key={sector.id} className="reveal-on-scroll" style={{ transitionDelay: `${i * 80}ms` }}>
-                <Link href={`/investments/${sector.slug}`} className="group block bg-white border border-gray-200 p-10 relative overflow-hidden transition-all duration-400 hover:shadow-xl hover:-translate-y-1 hover:border-transparent">
-                  <div className="absolute top-0 left-0 w-[3px] h-0 bg-accent transition-all duration-400 group-hover:h-full"></div>
-                  <h3 className="font-serif text-2xl mb-4 text-gray-900">{sector.title}</h3>
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">{sector.short_description}</p>
-                  <span className="text-primary text-xs font-semibold uppercase tracking-widest inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                    View Opportunities <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── Strategic Growth Sectors — TREE DIAGRAM ── */}
+      <SectorTreeDiagram sectors={sectors} />
 
+      {/* ── Active Projects ── */}
       {projects.length > 0 && (
         <section className="bg-gray-50 py-32">
           <div className="container mx-auto px-6">
@@ -131,6 +137,7 @@ export default async function Home() {
         </section>
       )}
 
+      {/* ── Impact + News ── */}
       <section className="bg-white py-32">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="reveal-on-scroll">
@@ -177,7 +184,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* --- HORIZONTAL SCROLLABLE GALLERY SECTION --- */}
+      {/* ── Gallery ── */}
       {gallery.length > 0 && (
         <section className="py-32 bg-primary-dark overflow-hidden">
           <div className="container mx-auto px-6">
@@ -195,7 +202,6 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Scrollable Track - Hides scrollbar using pure Tailwind arbitrary variants */}
           <div className="pl-6 md:pl-[calc((100vw-1200px)/2+24px)] flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
             {gallery.map((item, i) => (
               <div 
@@ -212,11 +218,8 @@ export default async function Home() {
                   unoptimized 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
                 <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                  <p className="text-white text-base font-medium leading-relaxed drop-shadow-lg">
-                    {item.caption}
-                  </p>
+                  <p className="text-white text-base font-medium leading-relaxed drop-shadow-lg">{item.caption}</p>
                 </div>
               </div>
             ))}
@@ -225,6 +228,7 @@ export default async function Home() {
         </section>
       )}
 
+      {/* ── CTA ── */}
       <section className="bg-primary py-32 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(212,175,55,0.1)_0%,transparent_60%)]"></div>
         <div className="container mx-auto px-6 relative z-10">

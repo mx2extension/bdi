@@ -1,13 +1,23 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Newspaper, Image, Briefcase, Heart, Users, FileText, Mail } from "lucide-react";
+import { Newspaper, Image, Briefcase, Heart, Users, FileText, Mail, MapPin } from "lucide-react"; // Added MapPin
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   const supabase = await createClient();
   
-  const [newsCount, heroCount, projectCount, impactCount, careerCount, newsletterCount, submissionCount, galleryCount] = await Promise.all([
+  const [
+    newsCount, 
+    heroCount, 
+    projectCount, 
+    impactCount, 
+    careerCount, 
+    newsletterCount, 
+    submissionCount, 
+    galleryCount, 
+    investmentMapCount // Added fetch
+  ] = await Promise.all([
     supabase.from("news").select("id", { count: "exact", head: true }),
     supabase.from("hero_slides").select("id", { count: "exact", head: true }),
     supabase.from("projects").select("id", { count: "exact", head: true }),
@@ -16,6 +26,7 @@ export default async function AdminDashboard() {
     supabase.from("newsletter_subscriptions").select("id", { count: "exact", head: true }),
     supabase.from("contact_submissions").select("id", { count: "exact", head: true }),
     supabase.from("gallery").select("id", { count: "exact", head: true }),
+    supabase.from("investment_opportunities").select("id", { count: "exact", head: true }), // Added fetch
   ]);
 
   const cards = [
@@ -27,6 +38,7 @@ export default async function AdminDashboard() {
     { title: "Newsletter", count: newsletterCount?.count || 0, href: "/admin/newsletter", icon: Mail, color: "bg-cyan-500" },
     { title: "Submissions", count: submissionCount?.count || 0, href: "/admin/submissions", icon: FileText, color: "bg-gray-500" },
     { title: "Gallery", count: galleryCount?.count || 0, href: "/admin/gallery", icon: Image, color: "bg-red-500" },
+    { title: "Investment Map", count: investmentMapCount?.count || 0, href: "/admin/investment-map", icon: MapPin, color: "bg-teal-600" }, // Added card
   ];
 
   return (

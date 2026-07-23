@@ -11,7 +11,7 @@ const faqs = [
   { q: "How can I invest in Bauchi State?", a: "You can explore our investment sectors and reach out to our team via the Contact page to discuss available opportunities and partnership structures." },
   { q: "What sectors does BDI focus on?", a: "We focus on Agriculture, Solid Minerals, Tourism, Energy, Technology, Infrastructure, Healthcare, and more." },
   { q: "Is BDI a government agency?", a: "BDI operates in strategic collaboration with government development goals but is established to drive private sector-led growth and innovation." },
-  { q: "How do I partner with BDI?", a: "Visit our Contact page or reach out via email at info@bdi.gov.ng to discuss potential partnerships, investments, or technical collaborations." },
+  { q: "How do I partner with BDI?", a: "Visit our Contact page or reach out via email at info.bdi.invest@gmail.com to discuss potential partnerships, investments, or technical collaborations." },
   { q: "What is the 7-Phase Development Model?", a: "It is BDI's strategic framework for transforming Bauchi State—ranging from foundational land mapping and legal alignment to infrastructure deployment and continuous investor adoption." },
   { q: "How does BDI support local entrepreneurs?", a: "We support local commerce by encouraging digital participation, providing platforms for market access, and fostering an environment where SMEs can thrive." }
 ];

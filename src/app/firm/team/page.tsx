@@ -19,14 +19,14 @@ const team = [
     name: "Hyicenth Munachi Nwauzor",
     role: "President MX2 EXTENSION ENT.",
     bio: "Oversees the identification, due diligence, and facilitation of high-value investment opportunities across agriculture, solid minerals, infrastructure sectors etc",
-    image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1783865460/87e2996c-2149-4c14-8bc4-29d3492fe21b.png",
+    image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1784630630/a978379a-ba83-424f-bba1-f0732d52608c.png",
     linkedin: "https://www.linkedin.com/in/hyicenth-casa/",
   },
   {
     name: "Chinemerem Nwankpa (King)",
     role: "Product Manager, MX2 EXTENSION ENT.",
     bio: "Leads the overarching strategy and execution of the Bauchi State Development Initiative, fostering global partnerships and aligning investments with the State Development Plan 2033.",
-    image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1783864945/593eb828-05ce-470f-83d7-a2da65f33daa.png",
+    image: "https://res.cloudinary.com/drnrbfltr/image/upload/v1784635990/83a2bae1-5748-4734-99b7-a4462440607f.png",
     linkedin: "https://www.linkedin.com/in/chinemerem-king-67a982248/",
   },
   {

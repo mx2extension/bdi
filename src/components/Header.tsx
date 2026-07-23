@@ -52,6 +52,7 @@ export default function Header() {
         { label: "Leadership Team", href: "/firm/team" },
         { label: "About Us", href: "/about/bdi" },
         { label: "Careers", href: "/careers" },
+        { label: "Investment Map", href: "/investment-map" },
       ],
     },
     {

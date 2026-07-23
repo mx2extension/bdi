@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
           [&_h2]:font-serif [&_h2]:text-2xl [&_h2]:text-gray-900 [&_h2]:mt-12 [&_h2]:mb-4
           [&_p]:mb-6">
           
-          <p className="text-sm text-gray-400">Last updated: January 2024</p>
+          <p className="text-sm text-gray-400">Last updated: July 2026</p>
 
           <h2>Introduction</h2>
           <p>
@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
 
           <h2>Contact Us</h2>
           <p>
-            If you have questions about this privacy policy or your personal data, please contact us at <a href="mailto:info@bdi.gov.ng" className="text-primary underline">info@bdi.gov.ng</a>.
+            If you have questions about this privacy policy or your personal data, please contact us at <a href="mailto:info.bdi.invest@gmail.com" className="text-primary underline">info.bdi.invest@gmail.com</a>.
           </p>
         </div>
       </div>

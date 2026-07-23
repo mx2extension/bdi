@@ -89,7 +89,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 text-sm mb-1">Office Address</h4>
-                  <p className="text-sm text-gray-600">Gwalameji,<br />Bauchi, Nigeria</p>
+                  <p className="text-sm text-gray-600">Bauchi,<br />Bauchi State, Nigeria</p>
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 text-sm mb-1">Email</h4>
-                  <p className="text-sm text-gray-600">info.bdi.invest@gmail.com<br />invest@bdi.ng</p>
+                  <p className="text-sm text-gray-600">info.bdi.invest@gmail.com<br /></p>
                 </div>
               </div>
 

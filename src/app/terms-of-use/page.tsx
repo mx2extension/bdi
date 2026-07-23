@@ -16,7 +16,7 @@ export default function TermsOfUsePage() {
           [&_h2]:font-serif [&_h2]:text-2xl [&_h2]:text-gray-900 [&_h2]:mt-12 [&_h2]:mb-4
           [&_p]:mb-6">
           
-          <p className="text-sm text-gray-400">Last updated: January 2024</p>
+          <p className="text-sm text-gray-400">Last updated: July 2026</p>
 
           <h2>Acceptance of Terms</h2>
           <p>
@@ -60,7 +60,7 @@ export default function TermsOfUsePage() {
 
           <h2>Contact</h2>
           <p>
-            For questions about these terms, please contact us at <a href="mailto:info@bdi.gov.ng" className="text-primary underline">info@bdi.gov.ng</a>.
+            For questions about these terms, please contact us at <a href="mailto:info.bdi.invest@gmail.com" className="text-primary underline">info.bdi.invest@gmail.com</a>.
           </p>
         </div>
       </div>

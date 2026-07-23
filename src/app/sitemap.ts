@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     supabase.from("news").select("slug, updated_at"),
   ]);
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bdi.gov.ng";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mx2bdi.com";
 
   const staticRoutes = [
     "",
@@ -26,10 +26,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy-policy",
     "/terms-of-use",
-    // NEW FIRM ROUTES:
     "/firm/history",
     "/firm/team",
     "/faqs", 
+    "/investment-map",
   ];
 
   const sectorRoutes =
