@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlobalScrollConfig from "@/components/GlobalScrollConfig";
-import AiChatBox from "@/components/AiChatBox"; // <-- IMPORT THE CHATBOX
+import AiChatBox from "@/components/AiChatBox";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
-// Replace with your actual deployed domain
 const siteUrl = "https://mx2bdi.com"; 
 const description = "Catalyzing sustainable economic growth in Bauchi State through strategic investments, innovation, and public-private partnerships.";
 const ogImage = "https://res.cloudinary.com/drnrbfltr/image/upload/v1781946164/file_00000000917071f492d4f57a5487aa02_btpy4b.png";
@@ -80,15 +79,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Bauchi State Development Initiative",
+    "url": siteUrl,
+    "logo": ogImage,
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        {/* Google Analytics Global Site Tag in <head> for Search Console Verification */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9X11EKBXN0"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-9X11EKBXN0');
+            `,
+          }}
+        />
+        {/* Organization Schema for Search Engines Logo Display */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="font-sans text-gray-600 bg-white antialiased">
         <GlobalScrollConfig />
         <Header />
         <main>{children}</main>
         <Footer />
-        <AiChatBox /> {/* <-- RENDER THE CHATBOX HERE */}
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
+        <AiChatBox />
       </body>
     </html>
   );
