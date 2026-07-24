@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     "Sustainable Economic Growth",
     "Public Private Partnerships Bauchi",
     "Investments in Bauchi",
-    "E7I Foundation",
+    "Eli7 Foundation",
   ],
   authors: [{ name: "Bauchi State Development Initiative" }],
   creator: "Bauchi State Development Initiative",
@@ -87,6 +88,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <AiChatBox /> {/* <-- RENDER THE CHATBOX HERE */}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
       </body>
     </html>
   );

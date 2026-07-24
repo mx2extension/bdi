@@ -18,14 +18,14 @@ import {
   MapPin,
   Check,
 } from "lucide-react";
-import { FaYoutube, FaXTwitter, FaInstagram } from "react-icons/fa6";
+import { FaYoutube, FaXTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import { DonationCopyButton } from "./donation-copy";
 import VideoPopup from "./VideoPopup";
 
 export const metadata: Metadata = {
-  title: "E7I Foundation — Empowering Communities, Changing Lives",
+  title: "Eli7 Foundation — Empowering Communities, Changing Lives",
   description:
-    "E7I Foundation is dedicated to uplifting underserved communities in Bauchi State through education, healthcare, women empowerment, and sustainable development.",
+    "Eli7 Foundation is dedicated to uplifting underserved communities in Bauchi State through education, healthcare, women empowerment, and sustainable development.",
 };
 
 const galleryImages = [
@@ -33,19 +33,18 @@ const galleryImages = [
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1781768276/WhatsApp_Image_2026-05-27_at_1.57.51_PM_th7r98.jpg",
     caption: "Community engagement in Bauchi State",
   },
-    {
+  {
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1782108455/WhatsApp_Image_2026-05-27_at_2.24.08_PM_n7ewbi.jpg",
     caption: "Community engagement in Bauchi State",
   },
-    {
+  {
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1782108440/WhatsApp_Image_2026-05-27_at_2.24.05_PM_snfttq.jpg",
     caption: "Community engagement in Bauchi State",
   },
-      {
+  {
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1782108616/WhatsApp_Image_2026-05-27_at_2.24.02_PM_jmfh65.jpg",
     caption: "Community engagement in Bauchi State",
   },
-
 ];
 
 const focusAreas = [
@@ -87,7 +86,7 @@ const focusAreas = [
   },
 ];
 
-export default function E7IFoundationPage() {
+export default function Eli7FoundationPage() {
   return (
     <main className="bg-white">
       {/* Auto-play Video Popup */}
@@ -99,7 +98,7 @@ export default function E7IFoundationPage() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <Image
           src="https://res.cloudinary.com/drnrbfltr/image/upload/v1781768259/WhatsApp_Image_2026-05-27_at_2.24.01_PM_gxtb3g.jpg"
-          alt="E7I Foundation — Community Impact"
+          alt="Eli7 Foundation — Community Impact"
           fill
           className="object-cover"
           priority
@@ -118,7 +117,7 @@ export default function E7IFoundationPage() {
             </div>
 
             <h1 className="font-serif text-5xl md:text-7xl text-white leading-[1.1] mb-6">
-              E7I <span className="text-accent">Foundation</span>
+              Eli7 <span className="text-accent">Foundation</span>
             </h1>
 
             <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-xl mb-10">
@@ -164,7 +163,7 @@ export default function E7IFoundationPage() {
               Starting Right Here in Bauchi
             </h2>
             <p className="mb-4 leading-relaxed text-gray-600">
-              E7I Foundation exists to uplift communities that are often overlooked.
+              Eli7 Foundation exists to uplift communities that are often overlooked.
               We believe real change begins at the grassroots — by listening to
               people, understanding their needs, and standing with them to find
               practical solutions.
@@ -210,7 +209,7 @@ export default function E7IFoundationPage() {
             <div className="absolute -bottom-5 -right-5 w-full h-full border border-accent -z-10" />
             <div className="absolute -bottom-6 -left-6 bg-primary-dark border border-accent/30 px-6 py-5 z-10">
               <span className="block text-accent font-serif text-3xl font-light">
-                E7I
+                Eli7
               </span>
               <span className="text-[9px] text-white/50 uppercase tracking-[0.25em]">
                 Impact Has Started
@@ -230,7 +229,7 @@ export default function E7IFoundationPage() {
               Leadership
             </span>
             <h2 className="font-serif text-4xl mb-4 text-gray-900">
-              The People Behind E7I
+              The People Behind Eli7
             </h2>
             <p className="text-gray-500 text-sm max-w-xl mx-auto mt-4">
               A small, dedicated team driving the foundation&apos;s mission forward on the ground in Bauchi State.
@@ -245,14 +244,9 @@ export default function E7IFoundationPage() {
               style={{ transitionDelay: "0ms" }}
             >
               <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
-                {/*
-                  ============================================
-                  REPLACE WITH ACTUAL PHOTO OF DIRECTOR OF OPERATIONS
-                  ============================================
-                */}
                 <Image
                   src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866796/3e58da7f-1e04-49a9-9518-7910b7743888.png"
-                  alt="Director of Operations — E7I Foundation"
+                  alt="Director of Operations — Eli7 Foundation"
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   unoptimized
@@ -261,14 +255,12 @@ export default function E7IFoundationPage() {
                 <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
               </div>
               <h3 className="font-serif text-xl text-gray-900 mb-1">
-                {/* REPLACE WITH ACTUAL NAME */}
                 Amarchi Sunday
               </h3>
               <p className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">
                 Director of Operations
               </p>
               <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
-                {/* REPLACE WITH ACTUAL BIO */}
                 Leads the foundation&apos;s on-the-ground operations in Bauchi State, coordinating outreach planning, community engagement, and program execution.
               </p>
             </div>
@@ -279,14 +271,9 @@ export default function E7IFoundationPage() {
               style={{ transitionDelay: "120ms" }}
             >
               <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
-                {/*
-                  ============================================
-                  REPLACE WITH ACTUAL PHOTO OF ASSISTANT
-                  ============================================
-                */}
                 <Image
                   src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866068/c96ec03f-dc64-4451-a9de-55f781ed3f23.png"
-                  alt="Assistant — E7I Foundation"
+                  alt="Assistant — Eli7 Foundation"
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   unoptimized
@@ -295,14 +282,12 @@ export default function E7IFoundationPage() {
                 <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
               </div>
               <h3 className="font-serif text-xl text-gray-900 mb-1">
-                {/* REPLACE WITH ACTUAL NAME */}
                 Mary Okorie
               </h3>
               <p className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">
                 Assistant
               </p>
               <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
-                {/* REPLACE WITH ACTUAL BIO */}
                 Supports the Director of Operations in logistics, communications, and coordination of foundation activities across communities.
               </p>
             </div>
@@ -621,23 +606,54 @@ export default function E7IFoundationPage() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <div className="flex items-center justify-between py-3 border-b border-white/[0.06]">
-                <span className="text-xs text-white/40 uppercase tracking-widest">Bank</span>
-                <span className="text-white font-medium">Parallex Bank</span>
-              </div>
-              <div className="flex items-center justify-between py-3 border-b border-white/[0.06]">
-                <span className="text-xs text-white/40 uppercase tracking-widest">Account Number</span>
-                <div className="flex items-center gap-3">
-                  <span className="text-white font-mono text-lg tracking-wider">2000674970</span>
-                  <DonationCopyButton text="2000674970" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Account 1 — Parallex Bank */}
+              <div className="bg-white/[0.03] border border-white/[0.06] p-5">
+                <span className="block text-[10px] text-accent font-semibold uppercase tracking-[0.2em] mb-4">Account 1</span>
+                <div className="space-y-4">
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Bank</span>
+                    <span className="text-white text-sm font-medium">Parallex Bank</span>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Account Number</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-white font-mono text-base tracking-wider">2000674970</span>
+                      <DonationCopyButton text="2000674970" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Account Name</span>
+                    <span className="text-white text-sm font-medium">Chinemerem Nwankpa</span>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center justify-between py-3 border-b border-white/[0.06]">
-                <span className="text-xs text-white/40 uppercase tracking-widest">Account Name</span>
-                <span className="text-white font-medium">Chinemerem Nwankpa</span>
+
+              {/* Account 2 — GTBank */}
+              <div className="bg-white/[0.03] border border-white/[0.06] p-5">
+                <span className="block text-[10px] text-accent font-semibold uppercase tracking-[0.2em] mb-4">Account 2</span>
+                <div className="space-y-4">
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Bank</span>
+                    <span className="text-white text-sm font-medium">Guaranty Trust Bank (GTB)</span>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Account Number</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-white font-mono text-base tracking-wider">0426938072</span>
+                      <DonationCopyButton text="0426938072" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">Account Name</span>
+                    <span className="text-white text-sm font-medium">Amarachi Sunday</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center justify-between py-3">
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-white/[0.06]">
+              <div className="flex items-center justify-between py-2">
                 <span className="text-xs text-white/40 uppercase tracking-widest">Email</span>
                 <div className="flex items-center gap-3">
                   <span className="text-white/80 text-sm">eli7foundation@gmail.com</span>
@@ -646,7 +662,7 @@ export default function E7IFoundationPage() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/[0.06]">
+            <div className="mt-5 pt-5 border-t border-white/[0.06]">
               <p className="text-[11px] text-white/30 leading-relaxed">
                 After making a transfer, please send confirmation to{" "}
                 <a
@@ -724,13 +740,13 @@ export default function E7IFoundationPage() {
             <span className="block text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-4">
               Connect With Us
             </span>
-            <h2 className="font-serif text-4xl text-white mb-4">Follow E7I Foundation</h2>
+            <h2 className="font-serif text-4xl text-white mb-4">Follow Eli7 Foundation</h2>
             <p className="text-white/40 text-sm max-w-md mx-auto">
               Stay updated on our outreaches, progress, and how your support is making a difference.
             </p>
           </div>
 
-          <div className="reveal-on-scroll flex flex-col sm:flex-row items-center justify-center gap-5">
+          <div className="reveal-on-scroll flex flex-col sm:flex-row flex-wrap items-center justify-center gap-5">
             {/* X / Twitter */}
             <a
               href="https://x.com/eli7foundation"
@@ -772,6 +788,20 @@ export default function E7IFoundationPage() {
                 <span className="block text-[11px] text-white/25">@eli7foundation</span>
               </div>
             </a>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/2348149193063"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 bg-white/[0.03] border border-white/[0.08] px-8 py-5 hover:bg-accent/[0.08] hover:border-accent/25 transition-all duration-500 min-w-[220px]"
+            >
+              <FaWhatsapp className="w-5 h-5 text-white/40 group-hover:text-accent transition-colors" />
+              <div>
+                <span className="block text-white text-sm font-medium group-hover:text-accent transition-colors">WhatsApp</span>
+                <span className="block text-[11px] text-white/25">+234 814 919 3063</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -781,7 +811,7 @@ export default function E7IFoundationPage() {
       ═══════════════════════════════════════ */}
       <section className="bg-[#071a16] py-24">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-5xl mx-auto text-center">
             <div>
               <Mail className="w-5 h-5 text-accent mx-auto mb-3" />
               <h4 className="text-xs text-white/40 uppercase tracking-widest mb-2">Email</h4>
@@ -807,15 +837,27 @@ export default function E7IFoundationPage() {
                 Support Our Work
               </a>
             </div>
+            <div>
+              <FaWhatsapp className="w-5 h-5 text-accent mx-auto mb-3" />
+              <h4 className="text-xs text-white/40 uppercase tracking-widest mb-2">Call or WhatsApp</h4>
+              <a
+                href="https://wa.me/2347034684943"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 text-sm hover:text-accent transition-colors"
+              >
+                +234 703 468 4943
+              </a>
+            </div>
           </div>
 
           <div className="border-t border-white/[0.06] mt-16 pt-10 text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="font-serif text-2xl text-accent">E7I</span>
+              <span className="font-serif text-2xl text-accent">Eli7</span>
               <span className="text-white/30 text-sm">Foundation</span>
             </div>
             <p className="text-[11px] text-white/20 leading-relaxed max-w-lg mx-auto">
-              This is a temporary page hosted on the BDI platform. E7I Foundation
+              This is a temporary page hosted on the BDI platform. Eli7 Foundation
               will transition to its own dedicated website in due course.
             </p>
             <div className="mt-6">

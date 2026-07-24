@@ -144,7 +144,7 @@ export default function Footer() {
             <h4 className="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-6">Initiatives</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/innovation" className="hover:text-accent hover:pl-1 transition-all">Innovation Hub</Link></li>
-              <li><Link href="/e7i-foundation" className="hover:text-accent hover:pl-1 transition-all inline-block">E7I Foundation</Link></li>
+              <li><Link href="/eli7foundation" className="hover:text-accent hover:pl-1 transition-all inline-block">Eli7 Foundation</Link></li>
               <li><a href="https://www.findoncampus.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent hover:pl-1 transition-all inline-block">FindOneCampus</a></li>
               <li><Link href="/projects" className="hover:text-accent hover:pl-1 transition-all">Active Projects</Link></li>
             </ul>
