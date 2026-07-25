@@ -12,7 +12,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 
 const siteUrl = "https://mx2bdi.com"; 
 const description = "Catalyzing sustainable economic growth in Bauchi State through strategic investments, innovation, and public-private partnerships.";
-const ogImage = "https://res.cloudinary.com/drnrbfltr/image/upload/v1781946164/file_00000000917071f492d4f57a5487aa02_btpy4b.png";
+const ogImage = "/icon.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -79,12 +79,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = {
+const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Bauchi State Development Initiative",
     "url": siteUrl,
     "logo": ogImage,
+    "sameAs": [
+      "https://x.com/bdi_investNGR",
+      "https://www.linkedin.com/company/bauchi-development-initiative-bdi/"
+    ]
   };
 
   return (
