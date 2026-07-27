@@ -30,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/firm/team",
     "/faqs", 
     "/investment-map",
+    "/"
   ];
 
   const sectorRoutes =

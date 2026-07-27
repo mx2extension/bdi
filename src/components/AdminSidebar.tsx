@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
   LayoutDashboard, Newspaper, Image, FolderOpen, Briefcase, Heart, 
-  Users, FileText, ExternalLink, LogOut, Mail 
+  Users, FileText, ExternalLink, LogOut, Mail, 
+  MapPin
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
@@ -22,6 +23,7 @@ export default function AdminSidebar() {
     { label: "Careers", href: "/admin/careers", icon: Users },
     { label: "Newsletter", href: "/admin/newsletter", icon: Mail },
     { label: "Submissions", href: "/admin/submissions", icon: FileText },
+    { label: "Investment Map", href: "/admin/investment-map", icon: MapPin }, // Added item
   ];
 
   const handleLogout = async () => {

@@ -27,6 +27,7 @@ export default async function AdminDashboard() {
     supabase.from("contact_submissions").select("id", { count: "exact", head: true }),
     supabase.from("gallery").select("id", { count: "exact", head: true }),
     supabase.from("investment_opportunities").select("id", { count: "exact", head: true }), // Added fetch
+    supabase.from("investment_map").select("id", { count: "exact", head: true }) // Added fetch
   ]);
 
   const cards = [

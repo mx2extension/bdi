@@ -79,7 +79,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-const organizationSchema = {
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Bauchi State Development Initiative",
@@ -94,18 +94,20 @@ const organizationSchema = {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* Google Analytics Global Site Tag in <head> for Search Console Verification */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9X11EKBXN0"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-9X11EKBXN0');
-            `,
-          }}
+        {/* Google Analytics using Next.js Script component */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9X11EKBXN0"
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9X11EKBXN0');
+          `}
+        </Script>
+        
         {/* Organization Schema for Search Engines Logo Display */}
         <Script
           id="organization-schema"
