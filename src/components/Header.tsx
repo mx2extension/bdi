@@ -20,7 +20,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isSolid = !isHome || isScrolled;
+  // Keeps header solid white when menu opens so it blends seamlessly
+  const isSolid = !isHome || isScrolled || isMobileOpen;
 
   const navLinks = [
     {
@@ -75,7 +76,8 @@ export default function Header() {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      {/* ADDED relative z-[70] here so logo and toggle stay above the dropdown */}
+      <div className="container mx-auto px-6 flex justify-between items-center relative z-[70]">
         {/* Logo Image */}
         <Link href="/" className="relative h-10 w-auto">
           <Image
@@ -140,7 +142,7 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden relative z-[70]"
+          className="lg:hidden relative z-[80]"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle Menu"
         >
@@ -152,67 +154,70 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fixed Full Screen Overlay Dropping from Top */}
       <div
-        className={`fixed top-0 right-0 h-screen w-80 bg-white shadow-2xl p-8 pt-20 transition-transform duration-300 lg:hidden z-[60] ${
-          isMobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 left-0 w-full h-screen bg-white shadow-2xl transition-transform duration-300 lg:hidden z-[60] ${
+          isMobileOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <ul className="flex flex-col">
-          {/* HOME LINK IN MOBILE: Only appears when not on homepage */}
-          {!isHome && (
-            <li className="border-b border-gray-100">
-              <Link
-                href="/"
-                className="block py-4 text-gray-800 font-medium"
-                onClick={() => setIsMobileOpen(false)}
-              >
-                Home
-              </Link>
-            </li>
-          )}
-
-          {navLinks.map((link) => (
-            <li key={link.label} className="border-b border-gray-100">
-              {link.children ? (
-                <>
-                  <button
-                    className="w-full text-left py-4 text-gray-800 font-medium flex justify-between items-center"
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === link.label ? null : link.label)
-                    }
-                  >
-                    {link.label}
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
-                  {openDropdown === link.label && (
-                    <ul className="pl-4 pb-4">
-                      {link.children.map((child) => (
-                        <li key={child.label}>
-                          <Link
-                            href={child.href}
-                            className="block py-2 text-sm text-gray-500 hover:text-primary transition-colors"
-                            onClick={() => setIsMobileOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : (
+        {/* pt-24 ensures the list starts below the header logo/close button */}
+        <div className="p-6 pt-24 overflow-y-auto h-full">
+          <ul className="flex flex-col">
+            {/* HOME LINK IN MOBILE: Only appears when not on homepage */}
+            {!isHome && (
+              <li className="border-b border-gray-100">
                 <Link
-                  href={link.href}
+                  href="/"
                   className="block py-4 text-gray-800 font-medium"
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  {link.label}
+                  Home
                 </Link>
-              )}
-            </li>
-          ))}
-        </ul>
+              </li>
+            )}
+
+            {navLinks.map((link) => (
+              <li key={link.label} className="border-b border-gray-100">
+                {link.children ? (
+                  <>
+                    <button
+                      className="w-full text-left py-4 text-gray-800 font-medium flex justify-between items-center"
+                      onClick={() =>
+                        setOpenDropdown(openDropdown === link.label ? null : link.label)
+                      }
+                    >
+                      {link.label}
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                    {openDropdown === link.label && (
+                      <ul className="pl-4 pb-4">
+                        {link.children.map((child) => (
+                          <li key={child.label}>
+                            <Link
+                              href={child.href}
+                              className="block py-2 text-sm text-gray-500 hover:text-primary transition-colors"
+                              onClick={() => setIsMobileOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="block py-4 text-gray-800 font-medium"
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </header>
   );

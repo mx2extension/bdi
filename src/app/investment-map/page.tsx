@@ -5,7 +5,7 @@ import InvestmentMapGrid from "./InvestmentMapGrid";
 import { ShieldCheck, Sparkles, Building2, Trees, Zap, Landmark } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Investment Map | Strategic Frameworks",
+  title: "Investment Map Series | KING'S VIEW",
   description: "Explore curated, research-driven investment proposals designed to unlock Bauchi State's economic potential.",
 };
 
@@ -24,7 +24,7 @@ export default async function InvestmentMapPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary-dark/80 to-transparent z-10"></div>
         <div className="absolute inset-0 z-[1] opacity-25">
           <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+            src="https://res.cloudinary.com/drnrbfltr/image/upload/v1785303212/c7650351-c14e-4202-b5e5-2ccf96243901.png"
             alt="Investment Map Background"
             fill
             className="object-cover"
@@ -37,7 +37,7 @@ export default async function InvestmentMapPage() {
             Strategic Initiatives
           </span>
           <h1 className="font-serif text-4xl sm:text-6xl text-white leading-tight">
-            Investment Map &amp; Frameworks
+            Investment Map Series | KING'S VIEW
           </h1>
           <p className="text-white/80 mt-6 max-w-2xl leading-relaxed text-base sm:text-lg">
             A repository of well-examined contemplations and actionable economic blueprints—leveraging deep regional insights to strategically position Bauchi State for high-impact investment.
