@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowLeft, Download, MapPin, Layers, FileText } from "lucide-react";
+import PdfViewer from "@/components/PdfViewer"; // Adjust this path if you saved it elsewhere
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -121,19 +122,12 @@ export default async function InvestmentDetailPage({ params }: PageProps) {
                 Proposal Package
               </div>
               <p className="text-xs text-gray-500 mb-6 leading-relaxed">
-                Download the complete pitch deck and operational framework document for detailed figures and strategic parameters.
+                Review the complete pitch deck and operational framework document for detailed figures and strategic parameters.
               </p>
 
               {item.pdf_url ? (
-                <a
-                  href={item.pdf_url}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-3.5 text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow"
-                >
-                  <Download className="w-4 h-4" /> Download PDF Proposal
-                </a>
+                // REPLACED WITH OUR IN-APP VIEWER COMPONENT
+                <PdfViewer pdfUrl={item.pdf_url} />
               ) : (
                 <button
                   disabled
