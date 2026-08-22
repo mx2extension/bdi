@@ -620,12 +620,23 @@ export default function BoardRegistrationPage() {
                     <Camera className="w-4 h-4" /><span>Snap ID Card</span>
                   </button>
                   <label className="px-4 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-100 cursor-pointer flex items-center">
-                    <span>Upload File</span><input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'idCard')} className="hidden" />
+                    <span>Upload File</span>
+                    {/* Updated to accept images, PDFs, and Word docs */}
+                    <input type="file" accept="image/*,.pdf,.doc,.docx" onChange={(e) => handleFileChange(e, 'idCard')} className="hidden" />
                   </label>
                 </div>
               ) : (
                 <div className="flex items-center space-x-4">
-                  <img src={idCardPreview} alt="ID Preview" className="w-24 h-16 object-cover rounded-lg border" />
+                  {/* Conditionally render PDF iframe, Word Doc icon, or Image */}
+                  {idCardFile?.type === 'application/pdf' ? (
+                    <iframe src={idCardPreview} title="ID Preview" className="w-24 h-16 rounded-lg border"></iframe>
+                  ) : idCardFile?.type === 'application/msword' || idCardFile?.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? (
+                    <div className="w-24 h-16 rounded-lg border flex items-center justify-center bg-white">
+                      <FileText className="w-8 h-8 text-gray-400" />
+                    </div>
+                  ) : (
+                    <img src={idCardPreview} alt="ID Preview" className="w-24 h-16 object-cover rounded-lg border" />
+                  )}
                   <button type="button" onClick={() => handleRemoveFile('idCard')} className="px-3 py-2 bg-red-50 text-red-600 border border-red-200 rounded-xl text-sm font-medium hover:bg-red-100 flex items-center space-x-1">
                     <Trash2 className="w-4 h-4" /><span>Retake / Delete</span>
                   </button>
