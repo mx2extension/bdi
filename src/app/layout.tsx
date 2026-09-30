@@ -72,6 +72,12 @@ export const metadata: Metadata = {
     icon: ogImage,
     apple: ogImage,
   },
+  // Added search engine verification tags
+  verification: {
+    google: "google56c3cfd324f1de1b",
+    // when you get Bing's meta code, add it here too:
+    // other: { 'msvalidate.01': 'YOUR_BING_CODE_HERE' },
+  },
 };
 
 export default function RootLayout({
