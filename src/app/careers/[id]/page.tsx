@@ -199,7 +199,7 @@ export default async function CareerDetailPage({
                   Apply Now
                 </a>
                 <p className="text-center text-xs text-gray-400 mt-4">
-                  Send your CV and cover letter to careers@bdi.gov.ng
+                  Send your CV and cover letter to info.bdi.invest@gmail.com
                 </p>
               </div>
 
