@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -10,6 +11,8 @@ import {
   ArrowLeft,
   Mail,
   ChevronRight,
+  Globe,
+  ExternalLink,
 } from "lucide-react";
 
 interface Career {
@@ -130,6 +133,51 @@ export default async function CareerDetailPage({
           </div>
         </div>
       </div>
+
+      {/* ─── Find One Campus Partnership Section (Placed Directly Below Header) ─── */}
+      <section className="bg-gray-50 py-12 border-b border-gray-200">
+        <div className="container mx-auto px-6">
+          <div className="bg-white border border-gray-200 p-6 md:p-8 rounded-lg shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              {/* Logo & Info */}
+              <div className="lg:col-span-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden p-2 border border-gray-100">
+                  <Image
+                    src="https://res.cloudinary.com/drnrbfltr/image/upload/v1786366443/84e84f1e-a42c-4792-8548-4d53fffb6708.png"
+                    alt="Find One Campus Logo"
+                    fill
+                    className="object-contain p-1"
+                    unoptimized
+                  />
+                </div>
+                <div>
+                  <span className="text-accent text-xs font-semibold uppercase tracking-widest block">
+                    Featured Global Opportunity Network
+                  </span>
+                  <h2 className="font-serif text-xl sm:text-2xl text-gray-900 mt-1">
+                    Looking for Global & Remote Work?
+                  </h2>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                    Explore digital opportunities and register as a service provider on <strong>FindOneCampus</strong> to get selected easily by international clients and teams.
+                  </p>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="lg:col-span-4 flex justify-start lg:justify-end">
+                <a
+                  href="https://www.findoncampus.com/become-a-provider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-accent text-primary-dark px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-accent-light transition-colors rounded-sm w-full lg:w-auto text-center"
+                >
+                  Become a Provider <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ─── Content ─── */}
       <div className="container mx-auto px-6 py-16">

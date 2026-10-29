@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import JobFilters from "@/components/careers/JobFilters";
-import { ArrowRight, Target, TrendingUp, Shield } from "lucide-react";
+import { ArrowRight, Target, TrendingUp, Shield, Globe, Briefcase, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -44,6 +44,78 @@ export default async function CareersPage() {
           </p>
         </div>
       </div>
+
+      {/* ─── Find One Campus Partnership Section (Placed Right After Hero) ─── */}
+      <section className="bg-gray-50 py-16 border-b border-gray-200 reveal-on-scroll">
+        <div className="container mx-auto px-6">
+          <div className="bg-white border border-gray-200 p-8 md:p-12 rounded-lg shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Logo & Info Header */}
+              <div className="lg:col-span-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden p-2 border border-gray-100">
+                    <Image
+                      src="https://res.cloudinary.com/drnrbfltr/image/upload/v1786366443/84e84f1e-a42c-4792-8548-4d53fffb6708.png"
+                      alt="Find One Campus Logo"
+                      fill
+                      className="object-contain p-1"
+                      unoptimized
+                    />
+                  </div>
+                  <div>
+                    <span className="text-accent text-xs font-semibold uppercase tracking-widest block">
+                      Featured Talent Ecosystem
+                    </span>
+                    <h2 className="font-serif text-2xl sm:text-3xl text-gray-900 mt-1">
+                      Global & Remote Opportunities with FindOneCampus
+                    </h2>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 leading-relaxed text-base mb-6">
+                  Through our strategic partnership with <strong>FindOneCampus</strong>, BDI is empowering local talent, skilled professionals, creators, and service providers across Bauchi State to gain direct access to globally competitive remote jobs and service demands.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                  <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-md border border-gray-100">
+                    <Globe className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-gray-900 text-sm">Global Marketplace</h4>
+                      <p className="text-xs text-gray-500 mt-0.5">Showcase your talents and get hired by international clients and teams.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-md border border-gray-100">
+                    <Briefcase className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-gray-900 text-sm">Provider Network</h4>
+                      <p className="text-xs text-gray-500 mt-0.5">Register your skill directory early to get selected easily by client searches.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action Box */}
+              <div className="lg:col-span-4 bg-primary-dark text-white p-8 rounded-lg text-center flex flex-col justify-center items-center h-full">
+                <h3 className="font-serif text-xl mb-3">Become a Service Provider</h3>
+                <p className="text-white/70 text-xs mb-6 leading-relaxed">
+                  Position yourself ahead of the curve. Set up your professional profile on Find One Campus today.
+                </p>
+                <a
+                  href="https://www.findoncampus.com/become-a-provider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-accent text-primary-dark px-6 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-accent-light transition-colors rounded-sm"
+                >
+                  Register Now <ExternalLink className="w-4 h-4" />
+                </a>
+                <span className="text-white/40 text-[11px] mt-4">
+                  Redirects to www.findoncampus.com
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ─── Why Work Here ─── */}
       <section className="container mx-auto px-6 py-20">
@@ -100,10 +172,10 @@ export default async function CareersPage() {
               <p className="text-sm text-gray-400">
                 Please check back regularly or send your CV to{" "}
                 <a
-                  href="mailto:careers@bdi.gov.ng"
+                  href="mailto:info.bdi.invest@gmail.com"
                   className="text-primary underline"
                 >
-                  careers@bdi.gov.ng
+                  info.bdi.invest@gmail.com
                 </a>
               </p>
             </div>
@@ -125,7 +197,7 @@ export default async function CareersPage() {
             details and we&apos;ll reach out when a matching role opens up.
           </p>
           <a
-            href="mailto:talent@bdi.gov.ng?subject=Join Talent Network"
+            href="mailto:info.bdi.invest@gmail.com?subject=Join Talent Network"
             className="inline-flex items-center gap-2 bg-accent text-primary-dark px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-accent-light transition-colors"
           >
             Join Now <ArrowRight className="w-4 h-4" />
