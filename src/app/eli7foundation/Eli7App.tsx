@@ -564,12 +564,12 @@ function SectionTeam() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
-          {/* Director of Operations */}
+          {/* Executive Director */}
           <div className="text-center group">
             <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
               <Image
-                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866796/3e58da7f-1e04-49a9-9518-7910b7743888.png"
-                alt="Director of Operations — Eli7 Foundation"
+                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1787737369/d2ab0c13-fa51-4d64-b2a3-765caa32c239.png"
+                alt="Executive Director — Eli7 Foundation"
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 unoptimized
@@ -599,12 +599,12 @@ function SectionTeam() {
             </a>
           </div>
 
-          {/* Assistant */}
+          {/* Treasurer */}
           <div className="text-center group">
             <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
               <Image
                 src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866068/c96ec03f-dc64-4451-a9de-55f781ed3f23.png"
-                alt="Assistant — Eli7 Foundation"
+                alt="Treasurer — Eli7 Foundation"
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 unoptimized
@@ -616,11 +616,10 @@ function SectionTeam() {
               Mary Okorie
             </h3>
             <p className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">
-              Assistant
+              Treasurer
             </p>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto mb-4">
-              Supports the Director of Operations in logistics, communications,
-              and coordination of foundation activities across communities.
+              Manages the foundation&apos;s financial resources, ensuring transparency and accountability in all fiscal matters.
             </p>
             <a
               href="https://www.linkedin.com/in/okorie-mary-ngozi/"

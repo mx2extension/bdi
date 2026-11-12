@@ -30,6 +30,8 @@ import {
   Image as ImageIcon,
   HeartHandshake,
   MessageCircle,
+  Menu,
+  X,
 } from "lucide-react";
 import {
   FaYoutube,
@@ -58,6 +60,10 @@ const navSections = [
 ];
 
 const galleryImages = [
+    {
+    src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1787232909/1d6b61c3-2f2a-4ad8-b810-6ba70ea816f8.png",
+    caption: "Community engagement in Bauchi State",
+  },
   {
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1781768276/WhatsApp_Image_2026-05-27_at_1.57.51_PM_th7r98.jpg",
     caption: "Community engagement in Bauchi State",
@@ -74,6 +80,10 @@ const galleryImages = [
     src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1782108616/WhatsApp_Image_2026-05-27_at_2.24.02_PM_jmfh65.jpg",
     caption: "Community engagement in Bauchi State",
   },
+    {
+    src: "https://res.cloudinary.com/drnrbfltr/image/upload/v1787237885/06af440f-84f4-4de8-9501-58d83c2703a7.png",
+    caption: "Menstural heath outreach in Bauchi State (Questionaire and awareness session)",
+  }
 ];
 
 const focusAreas = [
@@ -166,6 +176,8 @@ const GOFUNDME_LINK = "https://gofund.me/47539e4f4";
 
 export default function Eli7FoundationPage() {
   const [activeSection, setActiveSection] = useState("home");
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
+  const pageRootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
@@ -183,6 +195,32 @@ export default function Eli7FoundationPage() {
     return () => window.removeEventListener("popstate", onPop);
   }, []);
 
+  // This page is designed to run as a standalone campaign experience inside a
+  // larger website. Hide the host site's header/footer on both desktop and
+  // mobile, while leaving this page's own navigation untouched.
+  useEffect(() => {
+    const hostChrome = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "body header, body footer, body [role='banner'], body [role='contentinfo']"
+      )
+    ).filter((element) => !pageRootRef.current?.contains(element));
+
+    const previous = hostChrome.map((element) => ({
+      element,
+      display: element.style.getPropertyValue("display"),
+      priority: element.style.getPropertyPriority("display"),
+    }));
+
+    hostChrome.forEach((element) => element.style.setProperty("display", "none", "important"));
+
+    return () => {
+      previous.forEach(({ element, display, priority }) => {
+        if (display) element.style.setProperty("display", display, priority);
+        else element.style.removeProperty("display");
+      });
+    };
+  }, []);
+
   const navigate = (id: string) => {
     setActiveSection(id);
     window.history.pushState(null, "", `#${id}`);
@@ -190,7 +228,7 @@ export default function Eli7FoundationPage() {
   };
 
   return (
-    <>
+    <div ref={pageRootRef} className="min-h-screen">
       <style>{`
         @keyframes sFadeIn {
           from { opacity: 0; transform: translateY(10px); }
@@ -202,82 +240,122 @@ export default function Eli7FoundationPage() {
       <VideoPopup />
 
       {/* ═══════════════════════════════════
-          DESKTOP SIDEBAR
+          DESKTOP TOP NAVIGATION
       ═══════════════════════════════════ */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 z-50 w-16 bg-[#080f0c] border-r border-white/[0.04] flex-col items-center pt-5">
-<button
-  onClick={() => navigate("home")}
-  className="mb-8 relative w-10 h-10 flex items-center justify-center"
->
-  <Image
-    src="https://res.cloudinary.com/drnrbfltr/image/upload/v1785162601/40a0ba1f-21c6-4a22-b7bd-db18e8548205.png"
-    alt="Eli7 Foundation"
-    width={40}
-    height={40}
-    className="object-contain"
-    unoptimized
-  />
-</button>
+      <header className="hidden lg:flex fixed top-0 inset-x-0 z-50 h-[76px] items-center justify-between gap-6 px-7 xl:px-10 bg-[#080f0c]/95 backdrop-blur-xl border-b border-white/[0.07]">
+        <button
+          onClick={() => navigate("home")}
+          className="flex items-center gap-3 shrink-0"
+          aria-label="Eli7 Foundation home"
+        >
+          <Image
+            src="https://res.cloudinary.com/drnrbfltr/image/upload/v1793762135/a_clean_vector_style_sticker_emoji_illustration_on_bnu77d.png"
+            alt="Eli7 Foundation"
+            width={42}
+            height={42}
+            className="object-contain"
+            unoptimized
+          />
+          <span className="text-white text-[15px] font-semibold tracking-wide">Eli7 <span className="text-accent">Foundation</span></span>
+        </button>
 
-        <nav className="flex-1 flex flex-col items-center gap-0.5 w-full">
+        <nav aria-label="Main navigation" className="flex items-center justify-end gap-0.5 xl:gap-1 min-w-0">
           {navSections.map((section) => {
             const Icon = section.icon;
             const isActive = activeSection === section.id;
+            const isSupport = section.id === "support";
             return (
               <button
                 key={section.id}
                 data-nav={section.id}
                 onClick={() => navigate(section.id)}
-                className={`group relative flex items-center justify-center w-full py-3 transition-colors duration-200 ${
-                  isActive
-                    ? "text-accent"
-                    : "text-white/25 hover:text-white/55"
+                aria-current={isActive ? "page" : undefined}
+                className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 xl:px-3 py-2 text-[11px] xl:text-xs font-medium transition-colors duration-200 ${
+                  isSupport
+                    ? "ml-1 bg-accent text-[#080f0c] hover:bg-accent/90"
+                    : isActive
+                      ? "text-accent bg-white/[0.07]"
+                      : "text-white/55 hover:text-white hover:bg-white/[0.05]"
                 }`}
               >
-                {isActive && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-accent rounded-r-full" />
-                )}
-                <Icon className="w-[18px] h-[18px]" />
-                <span
-                  className="absolute left-full ml-4 px-3 py-1.5 bg-[#1a1a1a] border border-white/[0.08] text-white text-[11px] font-medium rounded-lg shadow-2xl opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-[100]"
-                >
-                  {section.label}
-                </span>
+                <Icon className="w-3.5 h-3.5" />
+                {section.label}
               </button>
             );
           })}
         </nav>
-      </aside>
+      </header>
 
       {/* ═══════════════════════════════════
-          MOBILE BOTTOM BAR
+          MOBILE FLOATING NAVIGATION
       ═══════════════════════════════════ */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#080f0c]/95 backdrop-blur-md border-t border-white/[0.04] flex items-center justify-around px-0.5 py-1">
-        {navSections.map((section) => {
-          const Icon = section.icon;
-          const isActive = activeSection === section.id;
-          return (
+      <div className="lg:hidden fixed bottom-24 right-4 z-[99999]">
+        {mobileMoreOpen && (
+          <>
             <button
-              key={section.id}
-              data-nav={section.id}
-              onClick={() => navigate(section.id)}
-              className={`relative flex flex-col items-center justify-center py-1.5 px-1.5 rounded-lg transition-colors duration-200 ${
-                isActive ? "text-accent" : "text-white/25"
-              }`}
+              className="fixed inset-0 z-[99998] bg-black/20"
+              aria-label="Close navigation menu"
+              onClick={() => setMobileMoreOpen(false)}
+            />
+            <nav
+              aria-label="Mobile navigation menu"
+              className="absolute bottom-[58px] right-0 z-[99999] w-64 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#101a15] p-2 shadow-2xl shadow-black/30"
             >
-              {isActive && (
-                <div className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-5 h-[2px] bg-accent rounded-full" />
-              )}
-              <Icon className="w-[18px] h-[18px]" />
-            </button>
-          );
-        })}
-      </nav>
+              <div className="px-3 py-2 mb-1 border-b border-white/[0.08]">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold">
+                  Eli7 Foundation
+                </p>
+                <p className="text-xs text-white/40 mt-1">Where would you like to go?</p>
+              </div>
+              {navSections.map((section) => {
+                const Icon = section.icon;
+                const isActive = activeSection === section.id;
+                return (
+                  <button
+                    key={section.id}
+                    data-nav={section.id}
+                    onClick={() => {
+                      navigate(section.id);
+                      setMobileMoreOpen(false);
+                    }}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm transition-colors ${
+                      isActive
+                        ? "bg-accent/10 text-accent"
+                        : "text-white/75 hover:bg-white/[0.06]"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span className="flex-1">{section.label}</span>
+                    {isActive && <span className="h-1.5 w-1.5 rounded-full bg-accent" />}
+                  </button>
+                );
+              })}
+            </nav>
+          </>
+        )}
+
+        <button
+          onClick={() => setMobileMoreOpen((open) => !open)}
+          aria-expanded={mobileMoreOpen}
+          aria-label={mobileMoreOpen ? "Close navigation" : "Open navigation"}
+          className="relative z-[99999] flex items-center gap-2 rounded-full border border-white/10 bg-[#080f0c] px-4 py-3 text-white shadow-xl shadow-black/30 ring-1 ring-white/10 transition-transform active:scale-95"
+        >
+          {mobileMoreOpen ? (
+            <X className="h-5 w-5 text-accent" />
+          ) : (
+            <Menu className="h-5 w-5 text-accent" />
+          )}
+          <span className="text-xs font-semibold tracking-wide">
+            {mobileMoreOpen ? "Close" : "Navigate"}
+          </span>
+        </button>
+      </div>
 
       {/* ═══════════════════════════════════
           MAIN CONTENT
       ═══════════════════════════════════ */}
-      <main className="lg:pl-16 pb-20 lg:pb-0 bg-white">
+      <main className="pt-0 lg:pt-[76px] pb-24 lg:pb-0 bg-white">
         {activeSection === "home" && (
           <div key="home" className="s-enter">
             <SectionHero onNav={navigate} />
@@ -318,8 +396,8 @@ export default function Eli7FoundationPage() {
         )}
         {activeSection === "support" && (
           <div key="support" className="s-enter">
-            <SectionWhySupport />
             <SectionDonate />
+            <SectionWhySupport />
           </div>
         )}
         {activeSection === "connect" && (
@@ -330,12 +408,12 @@ export default function Eli7FoundationPage() {
           </div>
         )}
       </main>
-    </>
+    </div>
   );
 }
 
 /* ─── we need these at module level ─── */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /* ═══════════════════════════════════════════
    SECTION COMPONENTS
@@ -367,7 +445,7 @@ function SectionHero({ onNav }: { onNav: (id: string) => void }) {
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
               <Image
-                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1785162601/40a0ba1f-21c6-4a22-b7bd-db18e8548205.png"
+                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1793762135/a_clean_vector_style_sticker_emoji_illustration_on_bnu77d.png"
                 alt="Eli7 Foundation"
                 fill
                 className="object-contain"
@@ -380,8 +458,9 @@ function SectionHero({ onNav }: { onNav: (id: string) => void }) {
           </div>
 
           <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-xl mb-10">
-            Empowering underserved communities in Bauchi State through
-            education, healthcare, and sustainable development.
+          Extending Love, Empowering Communities, and Building Futures Across Nigeria.
+          
+We are a dedicated women-led organization building a framework where vulnerable populations, persons with disabilities, and underserved communities thrive as equal participants in society especially women and girls through education, health, economic empowerment and protection. Through your support, we break barriers and build sustainable futures across Nigeria.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -422,7 +501,7 @@ function SectionDirectorsNote() {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 relative flex-shrink-0">
               <Image
-                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1785162601/40a0ba1f-21c6-4a22-b7bd-db18e8548205.png"
+                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1793762135/a_clean_vector_style_sticker_emoji_illustration_on_bnu77d.png"
                 alt="Eli7 Foundation"
                 fill
                 className="object-contain"
@@ -436,32 +515,27 @@ function SectionDirectorsNote() {
 
           <p className="text-white/65 text-[15px] md:text-base leading-[1.85] mb-5">
             There are communities across Northern Nigeria that many people will
-            never see — places where basic needs like clean water, sanitary
+            never see places where basic needs like clean water, sanitary
             products, and even a single nutritious meal are not guarantees, but
             privileges. These are not headlines. They are real people, real
             families, and real children who deserve more than being forgotten.
           </p>
 
           <p className="text-white/65 text-[15px] md:text-base leading-[1.85] mb-5">
-            We started Eli7 Foundation because we believe that reaching these
-            deep underserved areas is not optional — it is a responsibility. We
-            love what we do, not because it is easy, but because every time we
-            show up in a community, we see what happens when people realise
-            that someone actually cares. The smiles, the relief, the hope —
-            that is what fuels us.
+At ELI7, our mission is to catalyze inclusive transformation by advancing the rights and opportunities of persons with disabilities, underserved communities, especially women and girls. We break barriers through education, healthcare, economic empowerment, and protection initiatives, ensuring full participation in Nigerian society.
           </p>
 
           <p className="text-white/45 text-[15px] md:text-base leading-[1.85] mb-8">
             We know that with the support of as many people as possible —
             people who carry love in their hearts and a genuine desire to see
-            others lifted — there is no limit to what we can achieve together.
+            others lifted there is no limit to what we can achieve together.
             This is just the beginning.
           </p>
 
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 relative rounded-full overflow-hidden border border-accent/20 flex-shrink-0">
               <Image
-                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866796/3e58da7f-1e04-49a9-9518-7910b7743888.png"
+                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1787737369/d2ab0c13-fa51-4d64-b2a3-765caa32c239.png"
                 alt="Amarachi Sunday"
                 fill
                 className="object-cover"
@@ -494,17 +568,10 @@ function SectionAbout() {
             Starting Right Here in Bauchi
           </h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Eli7 Foundation exists to uplift communities that are often
-            overlooked. We believe real change begins at the grassroots — by
-            listening to people, understanding their needs, and standing with
-            them to find practical solutions.
+The Extend Love Initiative Foundation (ELI7 Foundation) is a dynamic, women-led organization operating nationwide across Nigeria, with deep foundational roots across Bauchi State and Northern Nigeria. We exist because temporary relief is never enough; true transformation requires building sustainable, self-reliant structures that permanently eradicate poverty and alter the heavy circumstances life has forced upon vulnerable populations.
           </p>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Our impact has already started here in Bauchi State. We have
-            successfully conducted our first community outreach and are actively
-            preparing for the next one. These are early steps, but they are
-            deliberate and grounded in a long-term commitment to the people of
-            this state.
+While we maintain a fierce, deliberate dedication to empowering young girls and women who carry the heartbeat of our homes, our scope and mandate are broad and inclusive. We build independent community systems, functional support networks, and structural frameworks that operate beyond traditional limitations—ensuring that every vulnerable individual, family, and person living with a disability is equipped to stand independently and thrive on their own terms.
           </p>
           <p className="mb-8 leading-relaxed text-gray-600">
             Every outreach, every connection, every resource directed to the
@@ -622,7 +689,7 @@ function SectionTeam() {
           <div className="text-center group">
             <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
               <Image
-                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866796/3e58da7f-1e04-49a9-9518-7910b7743888.png"
+                src="https://res.cloudinary.com/drnrbfltr/image/upload/v1787737369/d2ab0c13-fa51-4d64-b2a3-765caa32c239.png"
                 alt="Director of Operations — Eli7 Foundation"
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -635,7 +702,7 @@ function SectionTeam() {
               Amarchi Sunday
             </h3>
             <p className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">
-              Director of Operations
+              Executive Director of Operations
             </p>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto mb-4">
               Leads the foundation&apos;s on-the-ground operations in Bauchi State,
@@ -657,7 +724,7 @@ function SectionTeam() {
             <div className="relative w-56 h-56 mx-auto mb-6 overflow-hidden">
               <Image
                 src="https://res.cloudinary.com/drnrbfltr/image/upload/v1783866068/c96ec03f-dc64-4451-a9de-55f781ed3f23.png"
-                alt="Assistant — Eli7 Foundation"
+                alt="Treasurer — Eli7 Foundation"
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 unoptimized
@@ -669,11 +736,10 @@ function SectionTeam() {
               Mary Okorie
             </h3>
             <p className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">
-              Assistant
+              Treasurer
             </p>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto mb-4">
-              Supports the Director of Operations in logistics, communications,
-              and coordination of foundation activities across communities.
+              Manages the foundation&apos;s financial resources, ensuring transparency and accountability in all fiscal matters.
             </p>
             <a
               href="https://www.linkedin.com/in/okorie-mary-ngozi/"
@@ -1120,27 +1186,11 @@ function SectionWhySupport() {
 
 function SectionDonate() {
   return (
-    <section id="donate" className="bg-primary py-32 text-center relative overflow-hidden">
+    <section id="donate" className="bg-primary py-20 md:py-24 text-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(212,175,55,0.08)_0%,transparent_60%)]" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 mb-8">
-          <Heart className="w-3.5 h-3.5 text-accent" />
-          <span className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em]">
-            Support Our Cause
-          </span>
-        </div>
-
-        <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-          Support What We&apos;re Building
-        </h2>
-        <p className="text-white/60 text-lg max-w-2xl mx-auto mb-14 leading-relaxed">
-          We&apos;re at the beginning of something meaningful in Bauchi State.
-          Your support — no matter the size — helps us reach more communities
-          and make a real difference where it&apos;s needed most.
-        </p>
-
-        <div className="max-w-2xl mx-auto bg-white/[0.04] border border-white/[0.08] p-8 md:p-10 text-left">
+        <div className="max-w-2xl mx-auto mb-12 bg-white/[0.04] border border-white/[0.08] p-6 md:p-10 text-left">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
               <BookOpen className="w-5 h-5 text-accent" />
@@ -1163,14 +1213,6 @@ function SectionDonate() {
               <div className="space-y-4">
                 <div>
                   <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
-                    Bank
-                  </span>
-                  <span className="text-white text-sm font-medium">
-                    Parallex Bank
-                  </span>
-                </div>
-                <div>
-                  <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
                     Account Number
                   </span>
                   <div className="flex items-center gap-2">
@@ -1179,6 +1221,14 @@ function SectionDonate() {
                     </span>
                     <DonationCopyButton text="2000674970" />
                   </div>
+                </div>
+                <div>
+                  <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
+                    Bank
+                  </span>
+                  <span className="text-white text-sm font-medium">
+                    Parallex Bank
+                  </span>
                 </div>
                 <div>
                   <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
@@ -1198,14 +1248,6 @@ function SectionDonate() {
               <div className="space-y-4">
                 <div>
                   <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
-                    Bank
-                  </span>
-                  <span className="text-white text-sm font-medium">
-                    Guaranty Trust Bank (GTB)
-                  </span>
-                </div>
-                <div>
-                  <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
                     Account Number
                   </span>
                   <div className="flex items-center gap-2">
@@ -1214,6 +1256,14 @@ function SectionDonate() {
                     </span>
                     <DonationCopyButton text="0426938072" />
                   </div>
+                </div>
+                <div>
+                  <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
+                    Bank
+                  </span>
+                  <span className="text-white text-sm font-medium">
+                    Guaranty Trust Bank (GTB)
+                  </span>
                 </div>
                 <div>
                   <span className="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
@@ -1255,6 +1305,24 @@ function SectionDonate() {
             </p>
           </div>
         </div>
+
+        <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 mb-8">
+          <Heart className="w-3.5 h-3.5 text-accent" />
+          <span className="text-accent text-[10px] font-semibold uppercase tracking-[0.2em]">
+            Support Our Cause
+          </span>
+        </div>
+
+        <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
+          Support What We&apos;re Building
+        </h2>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto mb-14 leading-relaxed">
+          We&apos;re at the beginning of something meaningful in Bauchi State.
+          Your support — no matter the size — helps us reach more communities
+          and make a real difference where it&apos;s needed most.
+        </p>
+
+
       </div>
     </section>
   );
@@ -1309,7 +1377,7 @@ function SectionSocial() {
       icon: FaXTwitter,
       label: "X (Twitter)",
       handle: "@eli7foundation",
-      href: "https://x.com/eli7foundation",
+      href: "https://x.com/elih7foundation",
     },
     {
       icon: FaYoutube,
