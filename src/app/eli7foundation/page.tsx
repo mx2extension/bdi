@@ -152,7 +152,7 @@ const getInvolvedItems = [
     icon: Users,
     title: "Volunteer on the Ground",
     desc: "Join our outreach team in Bauchi State and support community activities directly.",
-    href: "https://wa.me/2348149193063",
+    href: "https://wa.me/2347034684943",
   },
   {
     icon: Sparkles,
@@ -185,13 +185,13 @@ const GOFUNDME_LINK = "https://gofund.me/47539e4f4";
 // Replace the text below with your actual Flutterwave payment link.
 // Use your website's thank-you URL as Flutterwave's redirect URL:
 // https://YOUR-DOMAIN/YOUR-PAGE#thank-you
-const FLUTTERWAVE_PAYMENT_LINK = "https://flutterwave.com/pay/eli7menstrualhealthto6000girls";
+const FLUTTERWAVE_PAYMENT_LINK = "https://flutterwave.com/pay/eli7menstrualhealth6000girls";
 
 // Public campaign link used in every share message (do not replace with Flutterwave).
 const CAMPAIGN_SHARE_LINK = GOFUNDME_LINK;
 const CERTIFICATE_WATERMARK_URL =
   "https://res.cloudinary.com/drnrbfltr/image/upload/v1794763399/681d4e2f-777f-43b6-9624-31e52c494f44.png";
-const WHATSAPP_CONTACT_LINK = "https://wa.me/2348149193063";
+const WHATSAPP_CONTACT_LINK = "https://wa.me/2347034684943";
 const X_CONTACT_LINK = "https://x.com/elih7foundation";
 const LINKEDIN_CONTACT_LINK = "https://www.linkedin.com/in/amarachi-sunday-8b30891a6/";
 
